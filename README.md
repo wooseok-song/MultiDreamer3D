@@ -78,7 +78,7 @@ cd ..
   bash ./scripts/train.sh
   ```
 
-We will soon provide the execution code used in our experiments. 
+We will soon provide the config files, LoRA weights, and .ply files used in our experiments.
 
 ---
 
