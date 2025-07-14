@@ -1,0 +1,144 @@
+port: 2355
+save_video: true
+seed: 0
+
+PipelineParams:
+  # convert_SHs_python: False #true = using direct rgb
+  convert_SHs_python: True #true = using direct rgb
+
+ModelParams:
+  workspace: .dog2_cat1
+  sh_degree: 0
+  bg_aug_ratio: 0.66
+
+GuidanceParams:
+  model_key: 'stabilityai/stable-diffusion-2-1-base'
+  text: ''
+  negative: 'unrealistic, blurry, low quality, out of focus, ugly, low contrast, dull, dark, low-resolution, oversaturation.'
+  perpneg: False
+  C_batch_size: 4
+  t_range: [0.02, 0.5]
+  max_t_range: 0.98
+  lambda_guidance: 0.1
+  guidance_scale: 7.5
+  denoise_guidance_scale: 1.0
+  
+  noise_seed: 0
+
+  ddim_inv: true
+  annealing_intervals: true
+
+  xs_delta_t: 200
+  xs_inv_steps: 5
+  xs_eta: 0.0
+  
+  delta_t: 200
+  delta_t_start: 100
+
+
+GenerateCamParams:
+  init_shape: 'shape'
+  init_prompt: ''  
+  use_pointe_rgb: false
+  init_num_pts: 100_000
+  phi_range: [-80, 80]
+  max_phi_range: [-180, 180]
+  rand_cam_gamma: 1.5
+  # rand_cam_gamma: 2.0
+
+  theta_range: [45, 120]
+  max_theta_range: [45, 120]
+
+  radius_range: [4.0, 4.5] #[3.8, 4.5] #[3.0, 3.5]
+  max_radius_range: [3.5, 4.5] #[3.8, 4.5] #[3.0, 3.5]
+  default_radius: 4.0
+
+  default_fovy: 0.70
+  fovy_range: [0.4, 0.70]
+  max_fovy_range: [0.4, 0.70]
+
+
+
+ConceptParams:
+
+  concept_type: "CISM" # ['CISM', 'FEDAVG']
+
+  step1_layout: true
+  step1_3d_layout_generator: true
+  step1_point_cloud_selection: true
+  step2_auto_concept_parsing: true
+
+  concept_num: 2
+  step1_base_prompt: "a dog and cat"
+  step1_concept0_prompt: 'A front view of dog.'
+  step1_concept1_prompt: 'a cat.' 
+  step1_concept2_prompt: ''
+  step1_concept3_prompt: '' 
+  step1_concept4_prompt: ''
+
+
+  step1_load_from_pcd_path: true
+  step1_concept0_pcd_path: '/workspace/wssong2/ijcai/MultiDreamer3D/output/debugging_250528_multidreamer3d/cism/case1/ex0_dog2_cat1/init_points3d_concept0.ply'
+  step1_concept1_pcd_path: '/workspace/wssong2/ijcai/MultiDreamer3D/output/debugging_250528_multidreamer3d/cism/case1/ex0_dog2_cat1/init_points3d_concept1.ply'
+  step1_concept2_pcd_path: ''
+  step1_concept3_pcd_path: ''
+  step1_concept4_pcd_path: ''
+
+
+  step1_concept0_transform: [ 0.6250, -0.5938,  0.3438, -0.2031,  0.0000]
+  step1_concept1_transform: [ 0.5469,  0.8906,  0.3438, -0.2031,  0.0000]
+  step1_concept2_transform: [1,0,0,0,0]
+  step1_concept3_transform: [1,0,0,0,0]
+  step1_concept4_transform: [1,0,0,0,0]
+
+  step1_concept0_bbox: [100, 150, 130, 160, 300, 200]
+  step1_concept1_bbox: [300, 150, 130, 140, 300, 200]
+  step1_concept2_bbox: [0, 0, 0, 0, 0, 0]
+  step1_concept3_bbox: [0, 0, 0, 0, 0, 0]
+  step1_concept4_bbox: [0, 0, 0, 0, 0, 0]
+
+  # Concept LoRA path
+  step2_LoRA_concept0_path: './lora/lora_weights_no_prior/lora-dog2/'
+  step2_LoRA_concept1_path: './lora/lora_weights_no_prior/lora-cat1/'
+  step2_LoRA_concept2_path: ''
+  step2_LoRA_concept3_path: ''
+  step2_LoRA_concept4_path: ''
+
+
+  step2_base_prompt: 'A <xvle> dog and <mciz> cat.'
+  step2_bg_prompt: 'A dog and cat.'
+  step2_concept0_prompt: 'A <xvle> dog'
+  step2_concept1_prompt: 'A <mciz> cat'
+  step2_concept2_prompt: ''
+  step2_concept3_prompt: ''
+  step2_concept4_prompt: ''
+
+  step2_lora_scale: 0.6
+
+  concept_eval_azimuth_degree: 45
+  real_data_concept0_path: "./data/multi_concept_3D/object/dog2"
+  real_data_concept1_path: "./data/multi_concept_3D/object/cat1"
+  real_data_concept2_path: ""
+  real_data_concept3_path: ""
+  real_data_concept4_path: ""
+
+
+OptimizationParams:
+  iterations: 5000
+  save_process: True
+  pro_frames_num: 600
+  pro_render_45: False
+  warmup_iter: 1500 # 2500
+
+  as_latent_ratio : 0.2
+  geo_iter : 0
+  densify_from_iter: 100
+  densify_until_iter: 3000
+  percent_dense: 0.003
+  densify_grad_threshold: 0.00075
+  progressive_view_iter: 500 #1500
+  opacity_reset_interval: 300 #500
+
+  scale_up_cameras_iter: 500
+  fovy_scale_up_factor: [0.75, 1.1]
+  phi_scale_up_factor: 1.5

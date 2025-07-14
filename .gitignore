@@ -1,0 +1,13 @@
+*.pyc
+.vscode
+output
+build
+output/
+point_e_model_cache/
+load/
+shap-e/
+shap_e_model_cache/
+wandb/
+submodules
+data/
+lora/
