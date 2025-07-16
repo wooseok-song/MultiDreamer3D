@@ -56,6 +56,7 @@ git clone https://github.com/openai/shap-e.git
 cd shap-e
 pip install -e .
 cd ..
+
 ```
 
 ### 2. Shap-E Checkpoint
@@ -63,12 +64,17 @@ cd ..
 - Download from: [HuggingFace Cap3D finetuned models](https://huggingface.co/datasets/tiange/Cap3D/tree/main/misc/our_finetuned_models)
 - Place `shapE_finetuned_with_825kdata.pth` under `./load`
 
+### 3. Train Concept LoRA weights
+- Place concept images under `./data/`
+
+
+### 4. Train Concept LoRA weights
+- **Train Concept LoRA:**  
+    For training Concept LoRA, please follow the official [DreamBooth LoRA training guide](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth) from Hugging Face Diffusers.
+- Place Lora weights under `./lora/lora_weights/`
 ---
 
 ## 🏃‍♂️ Usage
-- **Train with Concept LoRA:**  
-    For training Concept LoRA, please follow the official [DreamBooth LoRA training guide](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth) from Hugging Face Diffusers.
-
 - **Train with config file:**
   ```bash
   python train.py --opt <path to config file>

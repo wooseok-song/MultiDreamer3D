@@ -78,8 +78,8 @@ ConceptParams:
 
 
   step1_load_from_pcd_path: true
-  step1_concept0_pcd_path: '/workspace/wssong2/ijcai/MultiDreamer3D/output/debugging_250528_multidreamer3d/cism/case1/ex0_dog2_cat1/init_points3d_concept0.ply'
-  step1_concept1_pcd_path: '/workspace/wssong2/ijcai/MultiDreamer3D/output/debugging_250528_multidreamer3d/cism/case1/ex0_dog2_cat1/init_points3d_concept1.ply'
+  step1_concept0_pcd_path: './load/pcd/dog2_pcd.ply'
+  step1_concept1_pcd_path: './load/pcd/cat1_pcd.ply'
   step1_concept2_pcd_path: ''
   step1_concept3_pcd_path: ''
   step1_concept4_pcd_path: ''
@@ -98,8 +98,8 @@ ConceptParams:
   step1_concept4_bbox: [0, 0, 0, 0, 0, 0]
 
   # Concept LoRA path
-  step2_LoRA_concept0_path: './lora/lora_weights_no_prior/lora-dog2/'
-  step2_LoRA_concept1_path: './lora/lora_weights_no_prior/lora-cat1/'
+  step2_LoRA_concept0_path: './lora/lora_weights/lora-dog2/'
+  step2_LoRA_concept1_path: './lora/lora_weights/lora-cat1/'
   step2_LoRA_concept2_path: ''
   step2_LoRA_concept3_path: ''
   step2_LoRA_concept4_path: ''
@@ -116,8 +116,8 @@ ConceptParams:
   step2_lora_scale: 0.6
 
   concept_eval_azimuth_degree: 45
-  real_data_concept0_path: "./data/multi_concept_3D/object/dog2"
-  real_data_concept1_path: "./data/multi_concept_3D/object/cat1"
+  real_data_concept0_path: "./data/object/dog2"
+  real_data_concept1_path: "./data/object/cat1"
   real_data_concept2_path: ""
   real_data_concept3_path: ""
   real_data_concept4_path: ""
