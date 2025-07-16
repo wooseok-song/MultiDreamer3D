@@ -64,14 +64,14 @@ cd ..
 - Download from: [HuggingFace Cap3D finetuned models](https://huggingface.co/datasets/tiange/Cap3D/tree/main/misc/our_finetuned_models)
 - Place `shapE_finetuned_with_825kdata.pth` under `./load`
 
-### 3. Train Concept LoRA weights
-- Place concept images under `./data/`
+### 3. Prepare Concept images
+- Place concept images under `./data`
 
 
 ### 4. Train Concept LoRA weights
 - **Train Concept LoRA:**  
     For training Concept LoRA, please follow the official [DreamBooth LoRA training guide](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth) from Hugging Face Diffusers.
-- Place Lora weights under `./lora/lora_weights/`
+- Place Lora weights under `./lora/lora_weights`
 ---
 
 ## 🏃‍♂️ Usage
